@@ -3,19 +3,19 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    src: "/client/index.js",
+    src: "./client/index.js",
   },
-  mode: "development",
+  mode: "development", //change mode later
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "build"),
     clean: true,
   },
   devtool: "inline-source-map",
   module: {
     rules: [
       {
-        test: /\.js?/,
+        test: /\.jsx?/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -37,11 +37,11 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "assets"),
     },
     proxy: {
-      "/todos": "http://localhost:3000/",
-      "/test": "http://localhost:3000/",
+      "/todos": "http://localhost:3000",
+      "/test": "http://localhost:3000",
     },
   },
 };

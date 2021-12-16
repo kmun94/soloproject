@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
   const inputTextHandler = (e) => {
@@ -31,7 +31,7 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
         className="todo-input" 
         />
         <button 
-        onClick={submitTodoHandler} 
+        onClick={() => submitTodoHandler()} 
         className="todo-button" 
         type="submit">
           <i className="fas fa-plus-square"></i>

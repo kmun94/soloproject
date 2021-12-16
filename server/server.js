@@ -19,10 +19,10 @@ app.use("/test", (req, res) => {
 });
 
 //STATIC//
-app.use(express.static(path.resolve(__dirname, "../dist")));
+app.use(express.static(path.resolve(__dirname, "../build")));
 
 app.get("/", (req, res) => {
-  return res.sendFile(path.join(__dirname, "../dist/index.html"));
+  return res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 
