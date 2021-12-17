@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //import app from "../server/server";
 import "./App.css";
-//import axios from "axios";
+import axios from "axios";
 
 //Importing components//
 import Form from "./Components/Form";
@@ -17,13 +17,17 @@ function App() {
  //USE EFFECT//
   useEffect(() => {
     getLocalTodos();
+      // axios
+      // .get("/todos")
+      // .then((res) => setTodos(res.data))
+      // .catch((err) => console.log("Error fetching from the server " + err));
   }, []);
   
   useEffect(() => {
     filterHandler();
     saveLocalTodos();
   }, [todos, status]);
-  
+
   //FUNCTIONS//
   const filterHandler = () => {
     switch (status) {
@@ -52,12 +56,15 @@ function App() {
     }
   };
 
-   // useEffect(() => {
+  // useEffect(() => {
   //   axios
   //     .get("/test")
   //     .then((res) => console.log(res))
   //     .catch((err) => console.log("Error fetching from the server " + err));
   // }, []);
+  // useEffect(() => {
+
+  // })
 
   return (
     <div className="App">

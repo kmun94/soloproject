@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from "axios";
 
 const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
   const inputTextHandler = (e) => {
@@ -6,11 +7,17 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
   }
   const submitTodoHandler = (e) => {
     e.preventDefault();
+    // axios
+    // .post("/todos", {
+    //     text: inputText, 
+    //     completed: false, 
+    //   }) 
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log("Error fetching from the server " + err));
     setTodos([
       ...todos,
-      //Go back and add another column, completed to the database.  
       { 
-        id: Math.floor(Math.random() * 10000),
+        id: Math.random() * 1000,
         text: inputText, 
         completed: false, 
         },
@@ -20,8 +27,6 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
   const statusHandler = (e) => {
     setStatus(e.target.value);
   };
-
-  //FETCH REQUEST
     return(
       <form>
         <input 
@@ -31,7 +36,7 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus } ) => {
         className="todo-input" 
         />
         <button 
-        onClick={() => submitTodoHandler()} 
+        onClick={submitTodoHandler} 
         className="todo-button" 
         type="submit">
           <i className="fas fa-plus-square"></i>

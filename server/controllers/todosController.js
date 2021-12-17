@@ -32,9 +32,9 @@ todoController.getTodo = async (req, res, next) => {
 //CREATE TODO//
 todoController.createTodo = async (req, res, next) => {
   try {
-    const { description } = req.body;
+    const { text } = req.body;
     const newTodo = await pool.query(
-        'INSERT INTO todo (description) VALUES ($1) RETURNING *', [description]
+        'INSERT INTO todo (text) VALUES ($1) RETURNING *', [text]
     );
     res.locals.todo = newTodo.rows[0];
     return next();
@@ -47,9 +47,9 @@ todoController.createTodo = async (req, res, next) => {
 todoController.updateTodo = async (req, res, next) => {
   try {
    const { id } = req.params;
-   const { description } = req.body;
+   const { text } = req.body;
    const updateTodo = await pool.query(
-     'UPDATE todo SET description = $1 WHERE todo_id = $2', [description, id]
+     'UPDATE todo SET text = $1 WHERE todo_id = $2', [text, id]
    );
    res.json("Todo was successfully updated");
   } catch (err) {

@@ -22,9 +22,8 @@ app.use("/test", (req, res) => {
 app.use(express.static(path.resolve(__dirname, "../build")));
 
 app.get("/", (req, res) => {
-  return res.sendFile(path.join(__dirname, "../build/index.html"));
+  return res.sendFile(path.join(__dirname, "../client/index.html"));
 });
-
 
 // catch-all route handler for any requests to an unknown route//
 app.use((req, res) => {
